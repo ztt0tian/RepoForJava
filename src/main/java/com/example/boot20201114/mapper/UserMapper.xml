@@ -5,4 +5,11 @@
     <insert id="insert" parameterType="com.example.boot20201114.po.User">
         insert into user(user_name,user_psw) values(#{userName,jdbcType=VARCHAR},#{userPsw,jdbcType=VARCHAR})
     </insert>
+    <insert id="insertBatch" parameterType="list">
+        insert into user(user_name,user_psw) values
+        <foreach collection="list" item="user" index="index" separator=",">
+            (#{user.userName,jdbcType=VARCHAR},#{user.userPsw,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
 </mapper>
