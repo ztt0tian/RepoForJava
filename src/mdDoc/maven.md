@@ -51,3 +51,72 @@ mvn test -Ptest
 ```
 
 以上命令表示即是 使用id为test的Profile环境
+
+# 配置文件使用pom.xml定义的属性
+
+https://blog.csdn.net/u012501054/article/details/88397182
+
+https://blog.csdn.net/xukun5137/article/details/93527564
+
+pom.xml需要增加以下设置
+
+```xml
+ <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
+                    <configuration>
+                        <encoding>utf-8</encoding>
+                        <useDefaultDelimiters>true</useDefaultDelimiters>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+</build>
+```
+
+可以配置文件使用${varName}获取pom.xml中定义的属性值
+
+pom.xml需要增加以下设置
+
+```xml
+<resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+<resources>
+```
+
+可以配置文件使用@varName@获取pom.xml中定义的属性值
+
+# 使用BUGS
+
+
+
+Caused by: java.nio.charset.MalformedInputException: Input length = 1
+
+出现在使用`mvn compile`时
+
+解决：修改application.properties等属性文件的编码为UTF-8(原始为GBK)
+
+
+
+target的src不包含除.java外的其他文件
+
+参考：https://blog.csdn.net/u011781521/article/details/79052725
+
+解决：
+
+pom.xml build节点下增加以下设置：
+
+```xml
+<resource>
+    <directory>src/main/java</directory>
+    <includes>
+        <include>**/*.*</include>
+    </includes>
+</resource>
+```
