@@ -16,3 +16,7 @@ public @interface CustomAnnotation {
 @Target指定这个注解的作用范围（一般就是作用在类或者方法上）
 
 @Retention指定注解的生命周期，一般就用`RetentionPolicy.RUNTIME`
+
+# {{}}初始化
+
+双大括号初始化，匿名内部类初始化法

@@ -6,6 +6,8 @@
     <modules>
         <module>ztt-common</module>
         <module>ztt-web</module>
+        <module>SSM_TEMPLATE</module>
+        <module>Redis_Lock</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
